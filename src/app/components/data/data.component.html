@@ -1,0 +1,84 @@
+<div class="form-main-container">
+  <p>Details</p>
+  <hr />
+  <form
+    [formGroup]="dataGroup"
+    class="form-container"
+    (ngSubmit)="addDetails(dataGroup.value)"
+  >
+    <mat-form-field>
+      <mat-label> name </mat-label>
+      <input matInput type="text" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>email</mat-label>
+      <input matInput type="text" formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> address </mat-label>
+      <input matInput type="text" formControlName="address" />
+    </mat-form-field>
+
+    <button
+      *ngIf="!updateButtonVisible"
+      mat-raised-button
+      color="primary"
+      [disabled]="!dataGroup.valid"
+    >
+      SUBMIT
+    </button>
+    <button *ngIf="updateButtonVisible" mat-raised-button color="primary">
+      UPDATE
+    </button>
+  </form>
+</div>
+<div class="details">
+  <hr />
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name" class="name-column">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <div
+            style="display: flex; flex-direction: row; gap: 10px; padding: 5px"
+          >
+            <button
+              mat-raised-button
+              (click)="update(element.documentID)"
+              color="primary"
+            >
+              Update
+            </button>
+
+            <button
+              mat-raised-button
+              (click)="delete(element.documentID)"
+              color="warn"
+            >
+              delete
+            </button>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

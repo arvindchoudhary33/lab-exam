@@ -18,13 +18,13 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class DatabaseService {
   allDataSubject: Subject<Object[]> = new BehaviorSubject<Object[]>([]);
-  constructor(private store: Firestore) {}
+  constructor(private store: Firestore) { }
 
   async fetchQueryData() {
     let allData: Object[] = [];
     const q = query(
-      collection(this.store, 'list-of-students'),
-      where('class', '==', 'msc')
+      collection(this.store, 'list-of-students')
+      // where('class', '==', 'msc')
     );
     onSnapshot(q, (querySnapshot) => {
       allData = [];
@@ -54,7 +54,7 @@ export class DatabaseService {
     await deleteDoc(doc(this.store, 'list-of-students', id));
   }
 
-  async fetchParticularStudentData(id: any) {
+  async fetchDataById(id: any) {
     const docRef = doc(this.store, 'list-of-students', id);
     const docSnap = await getDoc(docRef);
 
@@ -66,7 +66,7 @@ export class DatabaseService {
   }
 
   async update(id: any, data: any) {
-    const studentRef = doc(this.store, 'list-of-students', id);
-    await updateDoc(studentRef, data);
+    const docRef = doc(this.store, 'list-of-students', id);
+    await updateDoc(docRef, data);
   }
 }

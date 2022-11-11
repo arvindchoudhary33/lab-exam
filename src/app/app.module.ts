@@ -13,7 +13,7 @@ import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { MscStudentsComponent } from './components/msc-students/msc-students.component';
+import { DataComponent } from './components/data/data.component';
 import { HomeComponent } from './components/home/home.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,7 +26,7 @@ import { MatCardModule } from '@angular/material/card';
     AppComponent,
     NavBarComponent,
     AboutUsComponent,
-    MscStudentsComponent,
+    DataComponent,
     HomeComponent,
   ],
   imports: [
@@ -49,4 +49,4 @@ import { MatCardModule } from '@angular/material/card';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

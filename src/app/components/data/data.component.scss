@@ -1,0 +1,45 @@
+.form-main-container {
+  margin-top: 40px;
+  width: 400px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  padding: 10px;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.details {
+  border: 1px solid lighgra;
+  border-radius: 4px;
+  padding: 10px;
+  overflow: scroll;
+}
+
+.table-container {
+  height: 400px;
+  overflow: auto;
+}
+table {
+  width: 400px;
+  box-shadow: none;
+  overflow: auto;
+  .mat-header-cell {
+    align-items: center;
+    text-align: center;
+  }
+  .mat-cell {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 28% !important;
+    width: 28% !important;
+    /* overflow-wrap: break-word; */
+    word-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: center;
+  }
+}
